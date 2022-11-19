@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - '**'
+
+#name: Test with Code Coverage
+name: Benchmark
+
+jobs:
+  test:
+    name: Run
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run benchmark
+        run: cargo bench
+        
