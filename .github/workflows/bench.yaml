@@ -16,6 +16,19 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-dependencies
+        with:
+          path: |
+            ~/.cargo/.crates.toml
+            ~/.cargo/.crates2.json
+            ~/.cargo/bin
+            ~/.cargo/registry/index
+            ~/.cargo/registry/cache
+            target/release
+          key: ${{ runner.os }}-build-v2-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
       - name: Run benchmark
         run: cargo bench --bench benchmark -- --warm-up-time 10  --sample-size 300
         

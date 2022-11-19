@@ -23,14 +23,14 @@ pub fn criterion_benchmark(c: &mut Criterion) {
     let done_in = Instant::now() - start;
     println!("Done in {} ms.", done_in.as_secs_f64() * 1000.0);
 
-    let mut g = c.benchmark_group("logical size");
+    let mut g = c.benchmark_group("physical size");
 
     g.bench_function("new", |b| b.iter(|| calculate_new_lib(true)));
     g.bench_function("old", |b| b.iter(|| calculate_old_lib(true)));
 
     g.finish();
 
-    let mut g = c.benchmark_group("physical size");
+    let mut g = c.benchmark_group("logical size");
 
     g.bench_function("new", |b| b.iter(|| calculate_new_lib(false)));
     g.bench_function("old", |b| b.iter(|| calculate_old_lib(false)));
