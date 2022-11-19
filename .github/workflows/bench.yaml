@@ -12,10 +12,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest] # no MacOS as it is too slow. need to find another directory
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - name: Run benchmark
-        run: cargo bench
+        run: cargo bench --bench benchmark -- --warm-up-time 10  --sample-size 300
         
