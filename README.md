@@ -1,0 +1,1 @@
+This is just benchmarks for https://github.com/scullionw/dirstat-rs used to test one feature

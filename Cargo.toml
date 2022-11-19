@@ -1,0 +1,17 @@
+[package]
+name = "dirstat-rs-benchmark"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dirstat_old={ git = "https://github.com/scullionw/dirstat-rs", branch = "master", package = "dirstat-rs"  }
+dirstat_new={ git = "https://github.com/Mart-Bogdan/dirstat-rs", branch = "max-path",package = "dirstat-rs"  }
+
+[dev-dependencies]
+criterion = "0.4.0"
+
+[[bench]]
+name = "benchmark"
+harness = false
